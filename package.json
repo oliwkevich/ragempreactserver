@@ -1,0 +1,19 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "ls"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/VladKnyaz/funnixdev.git"
+    },
+    "author": "Vlad Knyaz and faceplant",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/VladKnyaz/funnixdev/issues"
+    },
+    "homepage": "https://github.com/VladKnyaz/funnixdev#readme"
+}
