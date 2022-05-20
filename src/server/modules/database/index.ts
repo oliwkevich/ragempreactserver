@@ -7,11 +7,13 @@ const sequelize = new Sequelize('funnix', 'admin', 'admin', {
 let a = sequelize.define('accounts', {
     name: DataTypes.TEXT,
 });
-// a.sync({ force: true }); // синхра с бд
-(async () => {
-    try {
-        await a.create({ name: 'asdsaasd' });
-    } catch (e) {
-        console.log(e);
+
+mp.database = {
+    openConnection: () => {
+        sequelize.authenticate();
+    },
+    
+    closeConnection: () => {
+        sequelize.close();
     }
-})();
+};
