@@ -1,5 +1,9 @@
 {
     "devDependencies": {
         "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#v1.0"
+    },
+    "dependencies": {
+        "mysql2": "^2.3.3",
+        "sequelize": "^6.19.2"
     }
 }
