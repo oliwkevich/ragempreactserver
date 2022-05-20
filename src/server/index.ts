@@ -1,1 +1,1 @@
-console.log('test build');
+import './modules/database';

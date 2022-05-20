@@ -1,2 +1,3 @@
 "use strict";
-console.log('test build');
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./modules/database");
