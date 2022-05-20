@@ -10,13 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const sequelize = new sequelize_1.Sequelize('funnix_test', 'root', '', {
-    host: 'localhost',
+const sequelize = new sequelize_1.Sequelize('funnix', 'admin', 'admin', {
+    host: '188.134.70.194',
     dialect: 'mysql',
 });
 let a = sequelize.define('accounts', {
     name: sequelize_1.DataTypes.TEXT,
 });
+// a.sync({ force: true }); // синхра с бд
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield a.create({ name: 'asdsaasd' });
