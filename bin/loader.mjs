@@ -10,6 +10,7 @@ x();
     const FgBlue = '\x1b[34m';
     async function loadPackages() {
         const require = createRequire(import.meta.url);
+
         function getDirectories(srcpath) {
             return fs.readdirSync(srcpath).filter((file) => {
                 return fs.statSync(path.join(srcpath, file)).isDirectory();
