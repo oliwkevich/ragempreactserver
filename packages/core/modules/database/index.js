@@ -9,25 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.namespace = void 0;
 const sequelize_1 = require("sequelize");
 const cls_hooked_1 = require("cls-hooked");
-exports.namespace = (0, cls_hooked_1.createNamespace)('ns');
-sequelize_1.Sequelize.useCLS(exports.namespace);
+sequelize_1.Sequelize.useCLS((0, cls_hooked_1.createNamespace)('ns'));
 const sequelize = new sequelize_1.Sequelize('funnix', 'admin', 'admin', {
     host: '188.134.70.194',
     dialect: 'mysql',
 });
-let a = sequelize.define('accounts', {
+const accountsDB = sequelize.define('accounts', {
     name: sequelize_1.DataTypes.TEXT,
 });
 mp.database = {
+    accounts: accountsDB,
     openConnection: () => {
         try {
             sequelize.authenticate();
         }
         catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            console.log(`Custom error: Что то пошло не так...\n${err}`);
         }
         ;
     },
@@ -36,15 +35,15 @@ mp.database = {
             sequelize.close();
         }
         catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            console.log(`Custom error: Что то пошло не так...\n${err}`);
         }
         ;
     },
     makeTransaction: (callback) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             sequelize.authenticate();
-            let isReady = yield sequelize.transaction(() => __awaiter(void 0, void 0, void 0, function* () {
-                yield callback();
+            const isReady = yield sequelize.transaction(() => __awaiter(void 0, void 0, void 0, function* () {
+                callback();
                 return true;
             }));
             if (isReady) {
@@ -57,7 +56,7 @@ mp.database = {
             ;
         }
         catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            console.log(`Custom error: Что то пошло не так...\n${err}`);
             sequelize.close();
         }
         ;
