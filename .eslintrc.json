@@ -1,29 +1,32 @@
-{
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "no-console": "off",
-        "no-undef": "off",
-        "import/no-extraneous-dependencies": "off",
-        "semi": 1
-    }
-}
+// {
+//     "env": {
+//         "browser": true,
+//         "es2021": true
+//     },
+//     "extends": [
+//         "plugin:react/recommended",
+//         "airbnb",
+//         "prettier"
+//     ],
+//     "parser": "@typescript-eslint/parser",
+//     "parserOptions": {
+//         "ecmaFeatures": {
+//             "jsx": true
+//         },
+//         "ecmaVersion": "latest",
+//         "sourceType": "module"
+//     },
+//     "plugins": [
+//         "react",
+//         "@typescript-eslint"
+//     ],
+//     "rules": {
+//         "no-console": "off",
+//         "no-undef": "off",
+//         "import/no-extraneous-dependencies": "off",
+//         "no-param-reassign": "off",
+//         "import/no-unresolved": "off",
+//         "import/extensions": "off",
+//         "semi": 1
+//     }
+// }
