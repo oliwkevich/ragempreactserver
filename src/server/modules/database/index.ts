@@ -8,13 +8,11 @@ const sequelize = new Sequelize('funnix', 'admin', 'admin', {
     dialect: 'mysql',
 });
 
-const accountsDB = sequelize.define('accounts', {
-    name: DataTypes.TEXT,
-});
-
 mp.database = {
 
-    accounts: accountsDB,
+    accounts: sequelize.define('accounts', {
+        name: DataTypes.TEXT,
+    }),
     
     openConnection: () => {
         try {

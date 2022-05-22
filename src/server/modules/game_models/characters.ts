@@ -6,6 +6,7 @@ export class userModel {
         this.login = login;
         this.uid = uid;
         this.money = money;
+        this.init()
     }
     
     init(): void { userMethods.init(this._player) };
