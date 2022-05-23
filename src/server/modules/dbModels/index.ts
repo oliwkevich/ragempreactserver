@@ -1,4 +1,4 @@
-import { sequelize, Model } from 'sequelize';
+import { Sequelize, Model } from 'sequelize';
 import * as types from 'sequelize/types';
 
 export class User extends Model {
