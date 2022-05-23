@@ -13,6 +13,8 @@ const sequelize = new Sequelize('funnix', 'admin', 'admin', {
 //     name: DataTypes.TEXT,
 // });
 
+export default sequelize
+
 mp.database = {
 
     accounts: sequelize.define('accounts', {

@@ -1,5 +1,6 @@
 import { Sequelize, Model } from 'sequelize';
 import * as types from 'sequelize/types';
+import seq from '../database/index'
 
 export class User extends Model {
     public uid!: number;
@@ -26,4 +27,6 @@ User.init({
       allowNull: false,
       defaultValue: 3000
   }
-}, {sequelize});
+}, {
+  sequelize: seq
+});
