@@ -1,8 +1,7 @@
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 import { createNamespace } from 'cls-hooked';
 
-export const namespace = createNamespace('ns');
-Sequelize.useCLS(namespace);
+Sequelize.useCLS(createNamespace('ns'));
 
 const sequelize = new Sequelize('funnix', 'admin', 'admin', {
     host: '188.134.70.194',
@@ -15,6 +14,11 @@ const sequelize = new Sequelize('funnix', 'admin', 'admin', {
 // });
 
 mp.database = {
+
+    accounts: sequelize.define('accounts', {
+        name: DataTypes.TEXT,
+    }),
+    
     openConnection: () => {
         try {
             sequelize.authenticate();
@@ -35,8 +39,8 @@ mp.database = {
         try {
             sequelize.authenticate();
 
-            let isReady = await sequelize.transaction(async () => {
-                await callback();
+            const isReady = await sequelize.transaction(async () => {
+                callback();
                 return true;
             });
 

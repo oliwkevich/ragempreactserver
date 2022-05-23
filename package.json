@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/VladKnyaz/funnixdev#readme",
     "dependencies": {
+        "bcrypt": "^5.0.1",
         "cls-hooked": "^4.2.2",
         "mysql2": "^2.3.3",
         "sequelize": "^6.19.2"
