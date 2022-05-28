@@ -35,18 +35,26 @@ exports.userMethods = {
         states.default.forEach((declaratedState) => {
             if (declaratedState === state) {
                 player.setVariable(state, value);
-                console.log(`${declaratedState} now set to ${value}`);
+                mp.debug.log(`${player.name} | ${declaratedState} now set to ${value}`);
+            }
+            ;
+        });
+    },
+    switchState: (player, state) => {
+        states.default.forEach((declaratedState) => {
+            if (declaratedState === state) {
+                player.setVariable(state, !player.getVariable(state));
+                mp.debug.log(`${player.name} | ${declaratedState} now switch to ${!player.getVariable(state)}`);
             }
             ;
         });
     },
     getState: (player, state) => {
-        states.default.forEach((declaratedState) => {
-            if (declaratedState === state) {
-                return player.getVariable(state);
-            }
-            ;
-        });
+        // states.default.forEach((declaratedState: string) => {
+        //     if(declaratedState === state) {
+        //         return player.getVariable(state);
+        //     };
+        // });
     },
     teleport: (player, Vector3Mp) => {
         player.position = Vector3Mp;

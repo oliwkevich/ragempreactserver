@@ -1,0 +1,41 @@
+"use strict";
+const cReset = "\x1b[0m";
+const cRed = "\x1b[31m";
+const cGreen = "\x1b[32m";
+const cYellow = "\x1b[33m";
+const cBlue = "\x1b[34m";
+function getDate() {
+    let date = new Date();
+    return `[${date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()}:${date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()}:${date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds()}]`;
+}
+;
+mp.debug = mp.config.debug ? {
+    warn: (message) => {
+        console.log(`${getDate()} ${cYellow}[WARN] ${cReset}${message}`);
+        return { status: 1, message: message, time: getDate() };
+    },
+    log: (message) => {
+        console.log(`${getDate()} ${cGreen}[LOG] ${cReset}${message}`);
+        return { status: 1, message: message, time: getDate() };
+    },
+    error: (message, exit = false) => {
+        console.log(`${getDate()} ${cRed}[${exit ? `EXIT | ` : ``}ERROR] ${cReset}${message}`);
+        exit ? process.exit(0) : "";
+        return { status: 1, message: message, time: getDate() };
+    },
+    serviceLog: (message) => {
+        console.log(`${getDate()} ${cBlue}[Service] ${cReset}${message}`);
+        return { status: 1, message: message, time: getDate() };
+    }
+} : {
+    warn: (message) => { return { status: 0, message: message, time: getDate() }; },
+    log: (message) => { return { status: 0, message: message, time: getDate() }; },
+    error: (message) => { return { status: 0, message: message, time: getDate() }; },
+    serviceLog: (message) => {
+        console.log(`${getDate()} ${cBlue}[Service] ${cReset}${message}`);
+        return { status: 1, message: message, time: getDate() };
+    }
+};
+(() => {
+    mp.debug.serviceLog(`Debug status: ${mp.config.debug}`);
+})();

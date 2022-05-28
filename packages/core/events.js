@@ -6,7 +6,4 @@ mp.events.add('playerReady', (player) => {
     player.user.init();
     player.user.teleport(new mp.Vector3(0, 0, 0));
     player.user.setState('isAdmin', true);
-    let state = player.user.getState('isAdmin');
-    console.log(state);
-    console.log(player.user);
 });

@@ -6,7 +6,7 @@ Sequelize.useCLS(createNamespace('ns'));
 const sequelize = new Sequelize('funnix', 'admin', 'admin', {
     host: '188.134.70.194',
     dialect: 'mysql',
-    logging: true,
+    logging: false,
 });
 
 // let a = sequelize.define('accounts', {
@@ -25,7 +25,7 @@ mp.database = {
         try {
             sequelize.authenticate();
         } catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
         }
     },
 
@@ -33,7 +33,7 @@ mp.database = {
         try {
             sequelize.close();
         } catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
         }
     },
 
@@ -55,7 +55,7 @@ mp.database = {
                 );
             }
         } catch (err) {
-            err ? console.log(err) : console.log(`Custom error: Что то пошло не так...`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
             sequelize.close();
         }
     },

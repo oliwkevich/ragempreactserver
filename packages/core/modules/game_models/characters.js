@@ -12,6 +12,7 @@ class userModel {
         this.login = login;
         this.uid = uid;
         this.money = money;
+        this.init();
     }
     init() { methods_1.userMethods.init(this._player); }
     ;

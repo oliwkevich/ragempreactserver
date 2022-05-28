@@ -15,29 +15,31 @@ sequelize_1.Sequelize.useCLS((0, cls_hooked_1.createNamespace)('ns'));
 const sequelize = new sequelize_1.Sequelize('funnix', 'admin', 'admin', {
     host: '188.134.70.194',
     dialect: 'mysql',
+    logging: false,
 });
-const accountsDB = sequelize.define('accounts', {
-    name: sequelize_1.DataTypes.TEXT,
-});
+// let a = sequelize.define('accounts', {
+//     name: DataTypes.TEXT,
+// });
+exports.default = sequelize;
 mp.database = {
-    accounts: accountsDB,
+    accounts: sequelize.define('accounts', {
+        name: sequelize_1.DataTypes.TEXT,
+    }),
     openConnection: () => {
         try {
             sequelize.authenticate();
         }
         catch (err) {
-            console.log(`Custom error: Что то пошло не так...\n${err}`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
         }
-        ;
     },
     closeConnection: () => {
         try {
             sequelize.close();
         }
         catch (err) {
-            console.log(`Custom error: Что то пошло не так...\n${err}`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
         }
-        ;
     },
     makeTransaction: (callback) => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -53,12 +55,10 @@ mp.database = {
                 sequelize.close();
                 throw new Error(`Custom error: транзакция не была проведена по неизвестной причине.`);
             }
-            ;
         }
         catch (err) {
-            console.log(`Custom error: Что то пошло не так...\n${err}`);
+            err ? mp.debug.error(err) : mp.debug.error(`Custom error: Что то пошло не так...`);
             sequelize.close();
         }
-        ;
-    })
+    }),
 };
