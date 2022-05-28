@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#v2.0"
+    "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master"
   }
 }

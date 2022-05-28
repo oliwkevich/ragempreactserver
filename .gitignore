@@ -1,2 +1,3 @@
 /node_modules
 /client_packages/*
+!/client_packages/game_resources/common/data
