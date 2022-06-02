@@ -4,3 +4,4 @@ require("./modules/pauseMenu/customPauseLines");
 require("./modules/keys");
 require("./modules/preventGameActions");
 require("./modules/camera");
+require("./modules/radar");

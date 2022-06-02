@@ -20,7 +20,7 @@ async function authCheck(player: PlayerMp, data: any) {
     data = JSON.parse(data);
     let account = await mp.database.accounts.findOne({where: {login: data.login}});
     if(!account) return player.call('auth:error', [{message: 'Неверный логин или пароль'}]);
-    bcrypt.compare(data.password, account.password, (err, result) => {
+    bcrypt.compare(data.password, account.password, (err: any, result: any) => {
         if(result) initPlayer(player, account.uid, account.login, account.money);
         else return player.call('auth:error', [{message: 'Неверный логин или пароль'}]);
     })
