@@ -42,7 +42,7 @@ class Camera {
         }
     }
 
-    setCameraActive(name: string) {
+    setCameraActive(name: string, easeIn: boolean) {
 
         let camera = this.list.find(element => element.name == name);
 
@@ -52,7 +52,7 @@ class Camera {
 
             camera.cam.setActive(true);
 
-            mp.game.cam.renderScriptCams(true, false, 0, false, false);
+            mp.game.cam.renderScriptCams(true, false, 0, easeIn, false);
         }
 
     }
@@ -81,6 +81,14 @@ class Camera {
                 camera.cam.setCoord(position.x, position.y, position.z);
     }
 
+    setCameraRot(name: string, rot: {x:  number, y: number, z: number}) {
+        let camera = this.list.find(element => element.name == name);
+
+        if(camera)
+            if(mp.cameras.exists(camera.cam))
+            camera.cam.setRot(rot.x, rot.y, rot.z, 2);
+    }
+
     setCameraLookAt(name: string, position: Vector3Mp) {
         let camera = this.list.find(element => element.name == name);
 
@@ -96,7 +104,7 @@ class Camera {
             let tempCamera = mp.cameras.new("InterpolateCamera", position, new mp.Vector3(0, 0, 0), camera.cam.getFov());
             tempCamera.pointAtCoord(pointAt.x, pointAt.y, pointAt.z);
 
-            tempCamera.setActiveWithInterp(camera.cam.handle, duration, 0, 0);
+            tempCamera.setActiveWithInterp(camera.cam.handle, duration * 1000, 0, 0);
             mp.game.cam.renderScriptCams(true, false, 0, false, false);
 
             this.addInterpolationGargabe(camera.cam, tempCamera);
@@ -115,7 +123,16 @@ class Camera {
 
             camera.cam.setActive(false);
             camera.cam.destroy();
-            mp.game.cam.renderScriptCams(false, false, 0, false, false);
+            mp.game.cam.renderScriptCams(false, false, 0, true, false);
+        }
+    }
+
+    getCameraRot(name: string) {
+        let camera = this.list.find(element => element.name == name);
+
+        if(camera) {
+            let rot = camera.cam.getRot(2)
+            return Promise.resolve(rot)
         }
     }
 

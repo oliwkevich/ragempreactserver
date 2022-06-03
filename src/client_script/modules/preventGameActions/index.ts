@@ -16,4 +16,4 @@ mp.events.add("render", () => { //селектор оружия и назван�
     mp.game.ui.hideHudComponentThisFrame(3); //худ денег
 })
 
-mp.gui.chat.activate(false) //офф чата
+// mp.gui.chat.activate(false) //офф чата

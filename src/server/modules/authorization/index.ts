@@ -1,10 +1,12 @@
 import * as bcrypt from "bcrypt";
 import { userModel } from '../game_models/characters';
 import * as dbModel from '../dbModels/index';
+import { normalizeWeather } from './events'
 
 function initPlayer(player: PlayerMp, uid: number, login: string, money: number) {
     player.user = new userModel(player, uid, login, money);
     player.call(`auth:complete`);
+    normalizeWeather(player)
 };
 
 function initNewPlayer(player: PlayerMp, login: string, password: string) {

@@ -4,3 +4,5 @@ require("./modules/database");
 require("./events");
 require("./modules/consoleDebug");
 require("./modules/weather");
+//debug
+require("./modules/debug");

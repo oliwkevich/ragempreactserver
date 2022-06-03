@@ -5,3 +5,6 @@ require("./modules/keys");
 require("./modules/preventGameActions");
 require("./modules/camera");
 require("./modules/radar");
+require("./modules/authorization");
+//debug
+require("./modules/debug");
