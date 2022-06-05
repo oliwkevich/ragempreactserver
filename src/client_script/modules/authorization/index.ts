@@ -1,2 +1,2 @@
-import './modules/authorization/camera'
-import './modules/authorization/weather'
+import './camera';
+import './weather';
