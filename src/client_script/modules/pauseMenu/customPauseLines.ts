@@ -13,10 +13,11 @@ const renderHandle = () => {
     mp.game.graphics.endScaleformMovieMethod();
 };
 
-mp.events.add('render', renderHandle);
-
-mp.events.add("playerReady", () => {
+const pauseHDR = () => {
     mp.game.invoke("0xF314CF4F0211894E", 143, 94,86,248, 255);
     mp.game.invoke("0xF314CF4F0211894E", 116, 94,86,248, 255);
     mp.game.gxt.set("PM_PAUSE_HDR", "                                                              ~p~FUNNIX PROJECT");
-  });
+}
+
+mp.events.add('render', renderHandle);
+mp.events.add("playerReady", pauseHDR);

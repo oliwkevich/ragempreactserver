@@ -4,6 +4,8 @@
         "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#v1.0"
     },
     "dependencies": {
-        "cls-hooked": "^4.2.2"
+        "@types/node-cron": "^3.0.1",
+        "cls-hooked": "^4.2.2",
+        "node-cron": "^3.0.0"
     }
 }

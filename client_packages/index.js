@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 require('./modules/pauseMenu/customPauseLines');
@@ -18,3 +19,15 @@ mp.events.add('guiReady', () => {
 mp.events.add('log', () => {
     mp.console.logInfo('ЛОГ ОК!', true, true);
 });
+=======
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./modules/pauseMenu/customPauseLines");
+require("./modules/keys");
+require("./modules/preventGameActions");
+require("./modules/camera");
+require("./modules/radar");
+require("./modules/authorization");
+//debug
+require("./modules/debug");
+>>>>>>> 2c08dec6648da06a5e8103b12c62b01b9cf3521a

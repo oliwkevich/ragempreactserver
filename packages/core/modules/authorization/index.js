@@ -34,9 +34,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const characters_1 = require("../game_models/characters");
 const dbModel = __importStar(require("../dbModels/index"));
+const events_1 = require("./events");
 function initPlayer(player, uid, login, money) {
     player.user = new characters_1.userModel(player, uid, login, money);
     player.call(`auth:complete`);
+    (0, events_1.normalizeWeather)(player);
 }
 ;
 function initNewPlayer(player, login, password) {
