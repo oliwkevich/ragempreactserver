@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -31,8 +27,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcrypt = __importStar(require("bcrypt"));
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const characters_1 = require("../game_models/characters");
 const dbModel = __importStar(require("../dbModels/index"));
 function initPlayer(player, uid, login, money) {
@@ -43,7 +42,7 @@ function initPlayer(player, uid, login, money) {
 function initNewPlayer(player, login, password) {
     dbModel.User.create({
         login: login,
-        password: bcrypt.hashSync(password, 10),
+        password: bcrypt_1.default.hashSync(password, 10),
     }).then(res => {
         initPlayer(player, res.uid, res.login, res.money);
     });
@@ -55,7 +54,7 @@ function authCheck(player, data) {
         let account = yield mp.database.accounts.findOne({ where: { login: data.login } });
         if (!account)
             return player.call('auth:error', [{ message: 'Неверный логин или пароль' }]);
-        bcrypt.compare(data.password, account.password, (err, result) => {
+        bcrypt_1.default.compare(data.password, account.password, (err, result) => {
             if (result)
                 initPlayer(player, account.uid, account.login, account.money);
             else

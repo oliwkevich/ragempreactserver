@@ -1,0 +1,25 @@
+@use '../../../variables/_variables.scss' as *;
+
+// -------------------------------------
+
+.menu {
+    min-height: 100vh;
+    width: 14.7vw;
+    background: $gray;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    background-color: $lightGray;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    border: none;
+}
+
+.item:hover {
+    background-color: $darkGray;
+}

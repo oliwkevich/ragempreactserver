@@ -7,6 +7,7 @@ export class User extends Model {
     public login!: string;
     public money!: number;
 };
+
 User.init({
   uid: {
     type: types.NUMBER,

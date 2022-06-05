@@ -1,4 +1,4 @@
-import * as bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
 import { userModel } from '../game_models/characters';
 import * as dbModel from '../dbModels/index';
 
