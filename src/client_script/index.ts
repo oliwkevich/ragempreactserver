@@ -1,3 +1,4 @@
+
 import './modules/pauseMenu/customPauseLines';
 import './modules/keys';
 import './modules/preventGameActions';
@@ -11,12 +12,12 @@ import './modules/debug';
 
 // ----------- CLOSE debug -----------
 
-let browser = null;
+let browser = null;                                                                                                            
 
 mp.events.add('playerReady', () => {
     let player = mp.players.local;
     browser = mp.browsers.new('package://cef/index.html');
-});
+});                                                                                       
 
 mp.events.add('guiReady', () => {
     mp.events.add('browserDomReady', (browser) => {

@@ -1,25 +1,135 @@
 @use '../../../variables/_variables.scss' as *;
-
+@use '../../../scss/mixins.scss' as *;
 // -------------------------------------
-
 .menu {
     min-height: 100vh;
     width: 14.7vw;
-    background: $gray;
-}
+    position: absolute;
 
-.item {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    font-size: 25px;
-    background-color: $lightGray;
-    cursor: pointer;
-    text-decoration: none;
-    width: 100%;
-    border: none;
-}
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        @include adaptiv-font(34, 16);
+        line-height: 42px;
+    }
 
-.item:hover {
-    background-color: $darkGray;
+    .logo svg {
+        width: 3.49vw;
+    }
+
+    &_container {
+        color: #fff;
+        display: flex;
+    }
+
+    &_container-content {
+        // transition: 0.8s cubic-bezier(0.5, 1, 0.8, -1.1);
+        transition: 0.4s ease;
+        // transition: 0.8s cubic-bezier(0.22, 1.9, 0.9, 0.28);
+        // transition: 0.8s cubic-bezier(0, 1.05, 0.99, 0.94);
+
+        width: 10.2vw;
+        height: 100vh;
+        background: rgba(58, 58, 58, 0.6);
+        z-index: 24;
+        display: grid;
+        grid-template-rows: 83px 1fr minmax(165px, 83px);
+        transform: translate(-10.2vw);
+
+        &-center {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            &::-webkit-scrollbar {
+                width: 4px;
+                background-color: $gray;
+                border-radius: 50px;
+            }
+            &::-webkit-scrollbar-thumb {
+                width: 4px;
+                background-color: $blue;
+                border-radius: 50px;
+            }
+        }
+
+        &-block-text {
+            font-weight: 400;
+            @include adaptiv-font(24, 16);
+            line-height: 28px;
+            white-space: nowrap;
+            cursor: pointer;
+            height: 2.7vw;
+            display: flex;
+            justify-content: center;
+            margin-top: 35px;
+            align-items: center;
+            transition: 0.2s;
+            &:hover {
+                background-color: $glassGray;
+            }
+        }
+    }
+
+    &:hover &_container-content {
+        transform: translate(0);
+    }
+
+    &_container-icons {
+        display: grid;
+        grid-template-rows: 83px 1fr minmax(165px, 83px);
+        z-index: 25;
+        width: 4.6vw;
+        height: 100vh;
+        background-color: $gray;
+
+        &-center {
+            display: flex;
+            // flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        &-block {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        &-block-icon {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2.7vw;
+            height: 2.7vw;
+            background-color: $lightGrayMenu;
+            border-radius: 0.46vw;
+            transition: 0.2s;
+
+            svg {
+                width: 1.72vw;
+            }
+
+            &.active {
+                background-color: $purple;
+            }
+        }
+    }
+
+    &_item {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        @include adaptiv-font(24, 16);
+        cursor: pointer;
+        text-decoration: none;
+        width: 100%;
+        border: none;
+        margin-bottom: 35px;
+    }
 }

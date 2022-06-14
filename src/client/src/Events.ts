@@ -15,6 +15,14 @@ const eventsManager: IeventsManager = {
 window.eventsManager = eventsManager;
 export default eventsManager;
 
+// ПРИМЕР ВЗАИМОДЕЙСТВИЯ CEF - CLIENT
+
+// function handler(toggle: boolean) {
+//     mp.trigger('log');
+//     setActivePage(Epages.auth);
+// }
+// eventsManager.add('switchMenu', handler);
+
 // eventsManager.addHandler('hideMenu', (arg: any) => {
 //     console.log(arg);
 // });
