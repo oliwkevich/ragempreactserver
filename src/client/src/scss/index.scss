@@ -1,4 +1,14 @@
 @use '../variables/_variables.scss' as *;
 .wrapper {
     display: flex;
+    min-height: 100vh;
+    // background: url('../images/bg.png');
+}
+
+.overflow-h {
+    overflow: hidden;
+}
+
+.ml-50 {
+    padding-left: 50px;
 }
